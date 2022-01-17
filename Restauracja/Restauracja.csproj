@@ -6,13 +6,9 @@
 
   <ItemGroup>
     <Compile Remove="Data\ZdjeciaLink\**" />
-    <Compile Remove="Views\Home\**" />
     <Content Remove="Data\ZdjeciaLink\**" />
-    <Content Remove="Views\Home\**" />
     <EmbeddedResource Remove="Data\ZdjeciaLink\**" />
-    <EmbeddedResource Remove="Views\Home\**" />
     <None Remove="Data\ZdjeciaLink\**" />
-    <None Remove="Views\Home\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.1">
