@@ -65,14 +65,14 @@ namespace Restauracja
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
             app.UseSwagger(option => { option.RouteTemplate = swaggerOptions.JsonRoute; });
             app.UseSwaggerUI(option => {
-                option.SwaggerEndpoint(swaggerOptions.UIEndpoint,swaggerOptions.Description);
+                option.SwaggerEndpoint (swaggerOptions.UIEndpoint,swaggerOptions.Description);
             });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=PozycjeZamowienia}/{action=Index}/{id?}");
             });
             DbInitializer.Dane1(app);
         }

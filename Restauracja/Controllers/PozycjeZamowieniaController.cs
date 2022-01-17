@@ -22,7 +22,8 @@ namespace Restauracja.Controllers
             var res = await _service.PobierzWszystkie();
             return View(res);
         }
-
+        [HttpGet]
+        [Route("Filter/{searchString}")]
         public async Task<IActionResult> Filter(string searchString)
         {
             var res = await _service.PobierzWszystkie();
@@ -34,12 +35,12 @@ namespace Restauracja.Controllers
             return View("Index", res);
         }
 
-        public IActionResult DodajwMenu() //get drugi ścieżka pz/DodajwMenu
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> DodajwMenu([Bind("Nazwa, Id, Cena")] PozycjaZamowienia pozycjaZamowienia)
+        //public IActionResult DodajwMenu() //get drugi ścieżka pz/DodajwMenu
+        //{
+        //    return View();
+        //}
+        
+        public IActionResult DodajwMenu([Bind("Nazwa, Id, Cena")] PozycjaZamowienia pozycjaZamowienia)
         {
             if (!ModelState.IsValid)
             {
