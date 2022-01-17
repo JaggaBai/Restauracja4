@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PozycjaZamowienia>
+@{
+    ViewData["Title"] = "Lista dań";
+}
+
+<div class="row">
+   
+@foreach (var item in Model)
+{
+    <div class="col-md-4 col-xs-6 border-primary mb-3">
+        <div class="card mb-3" style="max-width: 500px;">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-black bg-light">
+                        <p class="card-text">
+                            <h5 class="card-title">
+                                @item.Nazwa
+                                <a class="text-white float-right">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <p class="card-text"><b> Cena: </b> @item.Cena </p>
+                        <p class="card-text"><b> Pozycja: </b> @item.IdPozycji </p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card-footer">
+                        <p class="card-text">
+                            <a class="btn btn-primary text-white float-md-none"> <i class="bi bi-cart-plus"></i> DODAJ </a>
+
+                        </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+  }
+
+    </div>
+<div class="text-black">
+    <a asp-controller="PozycjeZamowienia" asp-action="DodajwMenu" class="btn btn-danger"><i class="breadcrumb-item"></i> Wprowadz zmiany </a>
+</div>
+
