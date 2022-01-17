@@ -39,7 +39,7 @@ namespace Restauracja.Migrations
 
             modelBuilder.Entity("Restauracja.Models.PozycjaZamowienia", b =>
                 {
-                    b.Property<int>("IdPozycji")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -52,14 +52,14 @@ namespace Restauracja.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("IdPozycji");
+                    b.HasKey("Id");
 
                     b.ToTable("PozycjeZamowienia");
                 });
 
             modelBuilder.Entity("Restauracja.Models.Zamowienie_PozycjaZamowienia", b =>
                 {
-                    b.Property<int>("IdZamownie")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<int>("IdPozycji")
@@ -71,7 +71,7 @@ namespace Restauracja.Migrations
                     b.Property<int>("Liczba")
                         .HasColumnType("int");
 
-                    b.HasKey("IdZamownie", "IdPozycji");
+                    b.HasKey("Id", "IdPozycji");
 
                     b.HasIndex("IdPozycji");
 
@@ -80,7 +80,7 @@ namespace Restauracja.Migrations
 
             modelBuilder.Entity("Restauracja.Models.Zamownie", b =>
                 {
-                    b.Property<int>("IdZamownie")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -91,7 +91,7 @@ namespace Restauracja.Migrations
                     b.Property<int>("KlientId")
                         .HasColumnType("int");
 
-                    b.HasKey("IdZamownie");
+                    b.HasKey("Id");
 
                     b.HasIndex("KlientId");
 
@@ -100,15 +100,15 @@ namespace Restauracja.Migrations
 
             modelBuilder.Entity("Restauracja.Models.Zamowienie_PozycjaZamowienia", b =>
                 {
-                    b.HasOne("Restauracja.Models.PozycjaZamowienia", "PozycjaZamowienia")
+                    b.HasOne("Restauracja.Models.Zamownie", "Zamownie")
                         .WithMany("Zamowienie_PozycjaZamowienias")
-                        .HasForeignKey("IdPozycji")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Restauracja.Models.Zamownie", "Zamownie")
+                    b.HasOne("Restauracja.Models.PozycjaZamowienia", "PozycjaZamowienia")
                         .WithMany("Zamowienie_PozycjaZamowienias")
-                        .HasForeignKey("IdZamownie")
+                        .HasForeignKey("IdPozycji")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -10,7 +10,7 @@ namespace Restauracja.Models
     public class Zamownie
     {
         [Key]
-        public int IdZamownie { get; set; }
+        public int Id { get; set; }
         [Display(Name = "Numer Klienta")]
         public int KlientId { get; set; }
 

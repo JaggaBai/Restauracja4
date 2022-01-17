@@ -9,14 +9,15 @@ namespace Restauracja.Models
 {
     public class Zamowienie_PozycjaZamowienia
     {
-       
+        
+
         public int Liczba { get; set; }
 
         [Column(TypeName = "decimal(18, 2)")]
         public double Cena { get; set; }
 
         [ForeignKey("IdZamownie")]
-        public int IdZamownie { get; set; }
+        public int Id { get; set; }
         public Zamownie Zamownie { get; set; }
 
         [ForeignKey("IdPozycji")]

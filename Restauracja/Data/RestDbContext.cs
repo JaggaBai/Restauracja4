@@ -18,10 +18,10 @@ namespace Restauracja.Data
 
             modelBuilder.Entity<Zamowienie_PozycjaZamowienia>().HasKey(zpz => new
             {
-                zpz.IdZamownie,
+                zpz.Id,
                 zpz.IdPozycji
             });
-            modelBuilder.Entity<Zamowienie_PozycjaZamowienia>().HasOne(z => z.Zamownie).WithMany(zpz => zpz.Zamowienie_PozycjaZamowienias).HasForeignKey(z => z.IdZamownie);
+            modelBuilder.Entity<Zamowienie_PozycjaZamowienia>().HasOne(z => z.Zamownie).WithMany(zpz => zpz.Zamowienie_PozycjaZamowienias).HasForeignKey(z => z.Id);
 
             modelBuilder.Entity<Zamowienie_PozycjaZamowienia>().HasOne(pz => pz.PozycjaZamowienia).WithMany(zpz => zpz.Zamowienie_PozycjaZamowienias).HasForeignKey(pz => pz.IdPozycji);
 

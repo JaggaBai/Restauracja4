@@ -19,14 +19,14 @@ namespace Restauracja.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var res = await _service.PobierzWszystkie();
+            var res = await _service.PobierzWszystkieAsync();
             return View(res);
         }
         [HttpGet]
-        [Route("Filter/{searchString}")]
+       // [Route("Filter/{searchString}")]
         public async Task<IActionResult> Filter(string searchString)
         {
-            var res = await _service.PobierzWszystkie();
+            var res = await _service.PobierzWszystkieAsync();
             if (!string.IsNullOrEmpty(searchString))
             {
                 var filtrowanie = res.Where(n => n.Nazwa.Contains(searchString)).ToList();
@@ -34,22 +34,27 @@ namespace Restauracja.Controllers
             }
             return View("Index", res);
         }
-
+       
         //public IActionResult DodajwMenu() //get drugi ścieżka pz/DodajwMenu
         //{
         //    return View();
         //}
-        
-        public IActionResult DodajwMenu([Bind("Nazwa, Id, Cena")] PozycjaZamowienia pozycjaZamowienia)
+
+        public async Task <IActionResult> DodajwMenu([Bind("Nazwa, Id, Cena")] PozycjaZamowienia pozycjaZamowienia)
         {
             if (!ModelState.IsValid)
             {
                 return View(pozycjaZamowienia);
             }
-            _service.Dodaj(pozycjaZamowienia);
+            await _service.DodajAsync(pozycjaZamowienia);
             return RedirectToAction(nameof(Index));
         }
-       
-        }
+        //public Task<ActionResult> Znajdzpoid(int id)
+        //{
+          
+            
+        //}
+
+    }
     }
 

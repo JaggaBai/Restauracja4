@@ -1,4 +1,5 @@
-﻿using Restauracja.Models;
+﻿using Restauracja.Data.BaseRepo;
+using Restauracja.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Restauracja.Data.Services
 {
-    public interface IPozycjeZamowieniaService
+    public interface IPozycjeZamowieniaService:IEntityBaseRepository<PozycjaZamowienia>
     {
-        Task<IEnumerable<PozycjaZamowienia>> PobierzWszystkie();
-        void Dodaj(PozycjaZamowienia pozycjaZamowienia);
+        //Task<IEnumerable<PozycjaZamowienia>> PobierzWszystkieAsync();
+        //void DodajAsync(PozycjaZamowienia pozycjaZamowienia);
 
-        void Delate(int id);
+        //void DelateAsync(int id);
 
-
+      
 
     }
 }

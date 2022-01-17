@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Restauracja.Migrations
 {
-    public partial class Int : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,28 +25,28 @@ namespace Restauracja.Migrations
                 name: "PozycjeZamowienia",
                 columns: table => new
                 {
-                    IdPozycji = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nazwa = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Cena = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PozycjeZamowienia", x => x.IdPozycji);
+                    table.PrimaryKey("PK_PozycjeZamowienia", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Zamownia",
                 columns: table => new
                 {
-                    IdZamownie = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     KlientId = table.Column<int>(type: "int", nullable: false),
                     DataZamowienia = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Zamownia", x => x.IdZamownie);
+                    table.PrimaryKey("PK_Zamownia", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Zamownia_Klienci_KlientId",
                         column: x => x.KlientId,
@@ -59,25 +59,25 @@ namespace Restauracja.Migrations
                 name: "Zamowienie_PozycjaZamowienia",
                 columns: table => new
                 {
-                    IdZamownie = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     IdPozycji = table.Column<int>(type: "int", nullable: false),
                     Liczba = table.Column<int>(type: "int", nullable: false),
                     Cena = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Zamowienie_PozycjaZamowienia", x => new { x.IdZamownie, x.IdPozycji });
+                    table.PrimaryKey("PK_Zamowienie_PozycjaZamowienia", x => new { x.Id, x.IdPozycji });
                     table.ForeignKey(
                         name: "FK_Zamowienie_PozycjaZamowienia_PozycjeZamowienia_IdPozycji",
                         column: x => x.IdPozycji,
                         principalTable: "PozycjeZamowienia",
-                        principalColumn: "IdPozycji",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Zamowienie_PozycjaZamowienia_Zamownia_IdZamownie",
-                        column: x => x.IdZamownie,
+                        name: "FK_Zamowienie_PozycjaZamowienia_Zamownia_Id",
+                        column: x => x.Id,
                         principalTable: "Zamownia",
-                        principalColumn: "IdZamownie",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 

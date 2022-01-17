@@ -6,12 +6,17 @@
 
   <ItemGroup>
     <Compile Remove="Data\ZdjeciaLink\**" />
+    <Compile Remove="Views\Home\**" />
     <Content Remove="Data\ZdjeciaLink\**" />
+    <Content Remove="Views\Home\**" />
     <EmbeddedResource Remove="Data\ZdjeciaLink\**" />
+    <EmbeddedResource Remove="Views\Home\**" />
     <None Remove="Data\ZdjeciaLink\**" />
+    <None Remove="Views\Home\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\HomeController.cs" />
     <Compile Remove="Models\Pracownik.cs" />
   </ItemGroup>
 
@@ -20,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\" />
     <Folder Include="wwwroot\foto\" />
   </ItemGroup>
 
