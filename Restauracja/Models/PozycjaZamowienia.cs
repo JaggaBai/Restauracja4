@@ -16,7 +16,7 @@ namespace Restauracja.Models
         public int Id { get; set; }
 
         [Display(Name = "Nazwa")]
-        [Required]
+        [Required(ErrorMessage = "Wymagane wprowadzenie")]
         [StringLength(30)]
         public string Nazwa { get; set; }
 

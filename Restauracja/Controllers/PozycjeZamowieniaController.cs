@@ -22,7 +22,7 @@ namespace Restauracja.Controllers
             var res = await _service.PobierzWszystkieAsync();
             return View(res);
         }
-        [HttpGet]
+        //[HttpGet]
         //[Route("Filter/{searchString}")]
         public async Task<IActionResult> Filter(string searchString)
         {
