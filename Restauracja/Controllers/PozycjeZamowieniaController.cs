@@ -33,7 +33,8 @@ namespace Restauracja.Controllers
                 return View("Index", filtrowanie);
             }
             return View("Index", res);
-        }
+
+            }
        
         //public IActionResult DodajwMenu() //get drugi ścieżka pz/DodajwMenu
         //{

@@ -18,19 +18,24 @@ namespace Restauracja.Controllers
             _context = context;
             _mapper = mapper;
         }
-
-        public ActionResult<IEnumerable<KlientDto>> Index()
+        [HttpGet]
+        public ActionResult<IEnumerable<KlientDto>> Pobierz()
         {
             var data = _context.Klienci.ToList();
 
             var datadto = _mapper.Map<List<KlientDto>>(data);
-            return View(datadto);
+            return Ok(datadto);
         }
+
+
+        public IActionResult Index()
+    {
+        var data = _context.Klienci.ToList();
+        return View(data);
     }
+
+
 }
 
-         //public IActionResult Index()
-         //{
-         //    var data = _context.Klienci.ToList();
-         //    return View(data);
-         //}
+
+}

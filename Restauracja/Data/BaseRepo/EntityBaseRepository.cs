@@ -32,11 +32,9 @@ namespace Restauracja.Data.BaseRepo
         }
 
 
-        public async Task<IEnumerable<T>> PobierzWszystkieAsync()
-        {
-            var res = await _context.Set<T>().ToListAsync();
-            return res;
-        }
+        public async Task<IEnumerable<T>> PobierzWszystkieAsync() => await _context.Set<T>().ToListAsync();
+            
+        
     }
 }
     
